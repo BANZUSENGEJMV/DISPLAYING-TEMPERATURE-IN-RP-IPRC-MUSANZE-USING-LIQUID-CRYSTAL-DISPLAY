@@ -9,9 +9,63 @@ In previous year it was difficult to known the value  of temperature in differen
 ![image](https://user-images.githubusercontent.com/104396491/165182684-3511e2ad-962d-4349-9033-0af0389c7eb8.png)
 
 We have firstly the LM35 is the input sensor which is used to detect the temperature and give output which is proportional to the instantaneous temperature. while the Temperature sensor that converts the temperature into voltage. It further converts the voltage to Celsius, to Fahrenheit, and prints the Fahrenheit temperature on the liquid crystal display screen which is commonly used TVs and computer monitors, it is also used in screens for mobile devices, such as laptops, tablets, and smartphones. with the help of ARDUINO UNO which is a prototyping semi-conductor with a low-cost, flexible, easy to use programmable opensource microcontroller board that can be integrated into a variety of electronic projects and is used to control the whole system through its codding capacity to make things easy and minimize the cost of materials used and lcd displays the room temperature.
+![image](https://user-images.githubusercontent.com/104396491/165183942-8fd3326e-5ca4-4618-aa64-47638402913b.png)
+# Proteus circuit
+![image](https://user-images.githubusercontent.com/104396491/165184542-256cae45-3920-453c-802e-cc4f61b86c99.png)
 
-ᴼC
-#REFERENCES
+
+# Arduino Souurce codes
+ 
+#include <LiquidCrystal.h>
+
+#include <Wire.h>
+
+int value1=0;
+
+
+LiquidCrystal lcd(12,11,5,4,3,2);
+
+float temp=A0;
+
+int value=0;
+
+void setup() {
+
+  // put your setup code here, to run once:
+
+lcd.setCursor(0,0);
+
+  lcd.print("Temperature in celicius");
+  
+Serial.begin(9600); 
+}
+
+void loop() {
+
+  value = analogRead(A0);
+  
+  value=(value*500)/1023;
+  
+  value=digitalRead(6);
+  
+  Serial.println(value1);
+
+  delay(2000);
+  
+  
+  // put your main code here, to run repeatedly:
+  
+  lcd.setCursor(0, 1);
+  
+  lcd.print("in Degree C=");
+  
+  lcd.print(value);
+  
+  delay(3000);
+ 
+  
+}
+# REFERENCES
 1.	https://www.engeneersgarage.com
 2.	htttps://www.orientdisplay.com
 3.	htttps://www.arduino.cc/en/main/arduinoBoardUno
